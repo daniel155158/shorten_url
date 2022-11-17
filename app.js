@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
   const { url_origin } = req.body
-  res.render('index', { url_origin })
+  res.render('show', { url_origin })
 })
 
 app.listen(port, () => {
