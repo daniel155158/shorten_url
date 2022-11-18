@@ -2,7 +2,6 @@ const express = require('express')
 const app = express()
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
-
 const port = 3000
 
 //Setting template engine
@@ -16,7 +15,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  const { url_origin } = req.body
+  const url_origin = req.body.url_origin
   res.render('show', { url_origin })
 })
 

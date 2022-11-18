@@ -1,7 +1,37 @@
 <div class="container col-8 text-center">
-  <form action="/" method="POST">
-    <label for="url_origin" class="form-label"></label>
-    <input type="text" class="form-control" id="url_origin" name="url_origin" placeholder="Input URL here">
-    <button type="submit" class="btn btn-primary mt-3">Shorten</button>
+  <form action="/" method="POST" class="needs-validation" novalidate>
+    <div>
+      <label for="url_origin" class="form-label"></label>
+      <input type="text" class="form-control" id="url_origin" name="url_origin" placeholder="Input URL here" required>
+      <div class="invalid-feedback">
+        Please enter an URL!!
+      </div>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary mt-3">Shorten</button>
+    </div>
   </form>
 </div>
+
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function () {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+      .forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        }, false)
+      })
+  })()
+</script>
