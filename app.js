@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
+const generateShortenURL = require('./generate_shorten_url')
 const port = 3000
 
 //Setting template engine
@@ -16,7 +17,8 @@ app.get('/', (req, res) => {
 
 app.post('/', (req, res) => {
   const url_origin = req.body.url_origin
-  res.render('show', { url_origin })
+  const url_shorten = generateShortenURL()
+  res.render('show', { url_origin, url_shorten })
 })
 
 app.listen(port, () => {
