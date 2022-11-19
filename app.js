@@ -25,16 +25,32 @@ db.once('open', () => {
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
+//Setting app.use
 app.use(bodyParser.urlencoded({ extended: true }))
 
+//Setting routes
 app.get('/', (req, res) => {
   res.render('index')
 })
 
 app.post('/', (req, res) => {
   const url_origin = req.body.url_origin
-  const url_shorten = generateShortenURL()
-  res.render('show', { url_origin, url_shorten })
+  //尋找資料庫是否已有這筆url資料
+  Url.find({ url_origin })
+    .lean()
+    .then((url) => {
+      if (url.length) {
+        //資料庫已經有這筆url的資料->回傳相對應的短網址
+        res.render('show', { url_shorten: url[0].url_shorten })
+      } else {
+        //資料庫還沒有這筆url的資料->新增資料
+        const url_shorten = generateShortenURL(url_origin)
+        Url.create({ url_origin, url_shorten })
+          .then(() => res.render('show', { url_shorten }))
+          .catch(error => console.error(error))
+      }
+    })
+    .catch(error => console.error(error))
 })
 
 app.listen(port, () => {
