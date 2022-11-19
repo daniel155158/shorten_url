@@ -4,7 +4,7 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const generateShortenURL = require('./generate_shorten_url')
-const url = require('./models/url')
+const Url = require('./models/url')
 const port = 3000
 
 //非production環境使用dotenv
