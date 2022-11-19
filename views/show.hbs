@@ -2,6 +2,23 @@
   <form action="/" method="POST">
     <label for="url_shorten" class="form-label"></label>
     <input type="text" class="form-control" id="url_shorten" name="url_shorten" value="{{this.url_shorten}}">
-    <button type="submit" class="btn btn-primary mt-3">Copy</button>
+    <button type="submit" class="btn btn-primary mt-3" onclick="copyUrl()">Copy</button>
   </form>
 </div>
+
+<script>
+  function copyUrl() {
+    // Get the text field
+    var copyText = document.getElementById("url_shorten");
+
+    // Select the text field
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
+
+    // Copy the text inside the text field
+    navigator.clipboard.writeText(copyText.value);
+
+    // Alert the copied text
+    alert("Copied the text: " + copyText.value);
+  }
+</script>
