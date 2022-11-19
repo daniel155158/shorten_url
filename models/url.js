@@ -8,6 +8,9 @@ const urlSchema = new mongoose.Schema({
   url_shorten: {
     type: String,
     required: true
+  },
+  keywords: {
+    type: String,
   }
 })
 

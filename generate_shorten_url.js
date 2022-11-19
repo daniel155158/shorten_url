@@ -5,8 +5,8 @@ const numbers = '0123456789'
 const words = lowerLetters.concat(upperLetters).concat(numbers).split('')
 
 //產生短網址尾碼
-function generateShortenURL(url) {
-  let shortenURL = `${url}/`
+function generateShortenURL() {
+  let shortenURL = ''
   for (let i = 0; i < 5; i++) {
     const randomIndex = Math.floor(Math.random() * words.length)
     shortenURL += words[randomIndex]
