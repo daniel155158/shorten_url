@@ -1,10 +1,24 @@
 const db = require('../../config/mongoose')
 const Url = require('../url')
+const port = 3000
+
+const seeders = [
+  {
+    url_origin: 'https://www.google.com/',
+    url_shorten: `http://localhost:${port}/url1`,
+    keywords: 'url1',
+  }, {
+    url_origin: 'https://tw.yahoo.com/',
+    url_shorten: `http://localhost:${port}/url2`,
+    keywords: 'url2',
+  }, {
+    url_origin: 'https://www.youtube.com/',
+    url_shorten: `http://localhost:${port}/url3`,
+    keywords: 'url3',
+  }
+]
 
 db.once('open', () => {
-  // console.log('MongoDB connected')
-  for (let i = 0; i < 3; i++) {
-    Url.create({ url_origin: `http://test${i}`, url_shorten: `http://test${i}_shorten`, keywords: `test${i}` })
-  }
+  Url.insertMany(seeders)
   console.log('Done!')
 })
