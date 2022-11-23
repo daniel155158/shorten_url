@@ -28,7 +28,7 @@ APP is listening on http://localhost:3000
 ```
 表示伺服器順利啟動
 
-現在，你可開啟任一瀏覽器瀏覽器輸入[http://localhost:3000/](http://localhost:3000/) 開始使用此餐廳清單囉！
+現在，你可開啟任一瀏覽器瀏覽器輸入[http://localhost:3000/](http://localhost:3000/) 開始使用此短網址生產器囉！
 ## 開發工具
 * Node.js
 * Express
